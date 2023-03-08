@@ -1,7 +1,7 @@
 
 body {
     padding: 5% 10% 5% 10%;
-    background-image: linear-gradient(lightskyblue, aliceblue);
+    background-image: linear-gradient(#a1d7ff, aliceblue);
 }
 
 li, p {
@@ -11,7 +11,7 @@ li, p {
 .dark-mode {
     background-color: black;
     color: white;
-    background-image: linear-gradient(darkorchid, darkslateblue);
+    background-image: linear-gradient(#2b545e, darkslateblue);
 }
 
 h1 {
