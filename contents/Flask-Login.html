@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Flask-Login</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Flask-Login">
+<hr/>
+<h3>Flask-Login</h3>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">With the help of this module, we can add the
+            possibility to log in and log out to our website. <a href="https://flask-login.readthedocs.io/en/latest/" target="_blank">https://flask-login.readthedocs.io/en/latest/</a>
+</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#c678dd;">from </span>flask_login <span style="color:#c678dd;">import </span>UserMixin, login_user, LoginManager, login_required, current_user, logout_user<br/><br/></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">It connects to the database to authenticate the users
+            and it also needs a load_user function:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><br/>app = <span style="color:#61afef;">Flask</span>(__name__)<br/>login_manager = <span style="color:#61afef;">LoginManager</span>(<span style="color:#d19a66;">app</span>=app)                               <br/>login_manager.login_view = <span style="color:#98c379;">'login'<br/></span><span style="color:#5c6370;">#above LINE DIRECTS UNAUTHORUZED USERS TO 'LOGIN' PAGE IF THEY WANTED TO ACCSES SECRET PAGES.<br/></span><span style="color:#5c6370;"><br/></span><span style="color:#5c6370;"># MAKING THIS FUNCTION IS NECESSARY.<br/></span><span style="color:#e5c07b;">@login_manager.user_loader<br/></span><span style="color:#c678dd;">def </span><span style="color:#61afef;">user_load</span>(<span style="color:#d19a66;">user_id</span>):<br/>    <span style="color:#c678dd;">return </span>User.query.<span style="color:#61afef;">get</span>(<span style="color:#56b6c2;">int</span>(<span style="color:#d19a66;">user_id</span>))<br/><br/><span style="color:#5c6370;"># USERMIXIN CONNECTS THE FLASK_LOGIN TO DATABASE.<br/></span><span style="color:#c678dd;">class </span><span style="color:#e5c07b;">User</span>(UserMixin, db.Model):<br/>    id = db.<span style="color:#61afef;">Column</span>(db.Integer, <span style="color:#d19a66;">primary_key</span>=<span style="color:#c678dd;">True</span>)<br/>    email = db.<span style="color:#61afef;">Column</span>(db.<span style="color:#61afef;">String</span>(<span style="color:#d19a66;">100</span>), <span style="color:#d19a66;">unique</span>=<span style="color:#c678dd;">True</span>)<br/>    password = db.<span style="color:#61afef;">Column</span>(db.<span style="color:#61afef;">String</span>(<span style="color:#d19a66;">100</span>))<br/>    name = db.<span style="color:#61afef;">Column</span>(db.<span style="color:#61afef;">String</span>(<span style="color:#d19a66;">1000</span>))<br/><br/></pre></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">If the credential of a user matched the database, then
+            you should use a 'login_user' function and pass the user to it.</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">first, user enters his login credential into a form,
+            second, we find the user in the database and check the integrity of the password, then we pass that user to
+            'login_user' function.</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/login'</span>, <span style="color:#d19a66;">methods</span>=[<span style="color:#98c379;">'GET'</span>, <span style="color:#98c379;">'POST'</span>])<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">login</span>():<br/>    <span style="color:#c678dd;">if </span>request.method == <span style="color:#98c379;">'POST'</span>:<br/>        user = User.query.<span style="color:#61afef;">filter_by</span>(<span style="color:#d19a66;">email</span>=request.form[<span style="color:#98c379;">'email'</span>]).<span style="color:#61afef;">first</span>()<br/>        <span style="color:#c678dd;">if </span>user:<br/>            <span style="color:#c678dd;">if </span><span style="color:#61afef;">check_password_hash</span>(<span style="color:#d19a66;">password</span>=request.form[<span style="color:#98c379;">'password'</span>], <span style="color:#d19a66;">pwhash</span>=user.password):<br/>                <span style="color:#61afef;">login_user</span>(user) ####<br/>                <span style="color:#61afef;">flash</span>(<span style="color:#98c379;">'Login Successfully'</span>)<br/>                <span style="color:#c678dd;">return </span><span style="color:#61afef;">redirect</span>(<span style="color:#61afef;">url_for</span>(<span style="color:#98c379;">'secrets'</span>))</pre>
+<h4 style="box-sizing: border-box; font-family: inherit; font-weight: 500; line-height: 1.1; color: inherit; margin-top: 10px; margin-bottom: 10px;">
+<span style="font-size: 20.8px;">It is also important to distinguish the pages which require logging in:</span>
+</h4>
+<div>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/secrets'</span>)<br/><span style="color:#e5c07b;">@login_required  ####<br/></span><span style="color:#c678dd;">def </span><span style="color:#61afef;">secrets</span>():<br/>    <span style="color:#c678dd;">return </span><span style="color:#61afef;">render_template</span>(<span style="color:#98c379;">"secrets.html"</span>, <span style="color:#d19a66;">logged_in</span>=current_user.is_authenticated, <span style="color:#d19a66;">name</span>=current_user.name)<br/><br/></pre>
+</div>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">As you see above, 'current_user' is an object from the
+            flask login which can provide you with some info about the users.</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">Finally by the help of  'logout_user' , you can
+            let the users to log out:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/logout'</span>)<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">logout</span>():<br/>    <span style="color:#61afef;">logout_user</span>()<br/>    <span style="color:#c678dd;">return </span><span style="color:#61afef;">redirect</span>(<span style="color:#61afef;">url_for</span>(<span style="color:#98c379;">'home'</span>))<br/><br/></pre>
+<p>ADDITIONALS</p>
+<p>You can make your own decorator as same as 'login_required'. <a href="https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/#login-required-decorator" target="_blank">docs</a>
+</p>
+<p>It is used to give some extra permissions to admins:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#c678dd;">from </span>functools <span style="color:#c678dd;">import </span>wraps<br/><br/><br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">admin_only</span>(<span style="color:#d19a66;">func</span>):<br/>    <span style="color:#e5c07b;">@wraps</span>(<span style="color:#d19a66;">func</span>)<br/>    <span style="color:#c678dd;">def </span><span style="color:#61afef;">decorated_function</span>(<span style="color:#d19a66;">*args</span>, <span style="color:#d19a66;">**kwargs</span>):<br/>        <span style="color:#c678dd;">if </span>current_user <span style="color:#c678dd;">is None</span>:<br/>            <span style="color:#c678dd;">return </span><span style="color:#61afef;">redirect</span>(<span style="color:#61afef;">url_for</span>(<span style="color:#98c379;">'login'</span>))<br/>        <span style="color:#c678dd;">elif </span>current_user.admin != <span style="color:#d19a66;">1</span>: <span style="color:#5c6370;">#IN DATABASE, WE HAVE MADEN A BOOLEAN COLUMN TO DISTINGUISH ADMINS.<br/></span><span style="color:#5c6370;">            </span><span style="color:#61afef;">abort</span>(<span style="color:#d19a66;">403</span>)<br/>        <span style="color:#c678dd;">return </span><span style="color:#d19a66;">func</span>(*<span style="color:#d19a66;">args</span>, **<span style="color:#d19a66;">kwargs</span>)<br/>    <span style="color:#c678dd;">return </span>decorated_function<br/><br/><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">"/example"</span>)<br/><span style="color:#e5c07b;">@admin_only<br/></span><span style="color:#c678dd;">def </span><span style="color:#61afef;">example</span>():<br/>    <span style="color:#c678dd;">pass<br/></span><span style="color:#c678dd;"><br/></span></pre>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+

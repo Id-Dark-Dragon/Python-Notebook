@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>JSON</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="JSON">
+<hr/>
+<h3>JSON</h3>
+<p>JSON is a JSON file encoder and decoder module. <a href="https://docs.python.org/3/library/json.html" target="_blank">Docs</a>
+</p>
+<p> Here is how to make a JSON file with this library (you should always dump a dictionary) :</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#c678dd;">import </span>json<br/><br/>json_dict = {<span style="color:#98c379;">'website'</span>:<br/>                 {<span style="color:#98c379;">'password'</span>: <span style="color:#98c379;">'acdfgfsd'</span>,<br/>                  <span style="color:#98c379;">"username"</span>: <span style="color:#98c379;">'alo'</span>}<br/>             }<br/><br/><br/><span style="color:#c678dd;">with </span><span style="color:#56b6c2;">open</span>(<span style="color:#98c379;">'data.json'</span>, <span style="color:#98c379;">'w'</span>) <span style="color:#c678dd;">as </span>data_file:<br/>    json.<span style="color:#61afef;">dump</span>(json_dict, data_file, <span style="color:#d19a66;">indent</span>=<span style="color:#d19a66;">4</span>)<br/><br/><br/></pre></pre></pre>
+<p>To read JSON data from a JSON file we could use 'json.load' method and if you want to read a dictionary
+            structured file (such as an str.) as a dictionary in python you should use 'json.loads' method.</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/>a = <span style="color:#56b6c2;">open</span>(<span style="color:#98c379;">'test.txt'</span>).<span style="color:#61afef;">read</span>()<br/>json1_data = json.<span style="color:#61afef;">loads</span>(a)<br/><span style="color:#56b6c2;">print</span>(<span style="color:#56b6c2;">type</span>(a), <span style="color:#56b6c2;">type</span>(json1_data))<br/><br/>result &gt;&gt;&gt;&gt; &lt;<span style="color:#c678dd;">class </span><span style="color:#98c379;">'str'</span>&gt; &lt;<span style="color:#c678dd;">class </span><span style="color:#98c379;">'dict'</span>&gt;<br/><br/></pre>
+<p>And this is how to update data with this module:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#5c6370;"># First data is being read, then it will be updated, then we dumped the whole json again.<br/></span><span style="color:#c678dd;">with </span><span style="color:#56b6c2;">open</span>(<span style="color:#98c379;">'data.json'</span>, <span style="color:#98c379;">'r'</span>) <span style="color:#c678dd;">as </span>data_file:<br/>    data = json.<span style="color:#61afef;">load</span>(data_file)<br/>    data.<span style="color:#61afef;">update</span>(json_dict)    <span style="color:#5c6370;"># Update method is python Built-in.<br/></span><span style="color:#5c6370;">    <br/></span><span style="color:#5c6370;"># Make sure to open in 'mode="w"' for having 1 dictionary in json file.<br/></span><span style="color:#c678dd;">with </span><span style="color:#56b6c2;">open</span>(<span style="color:#98c379;">'data.json'</span>, <span style="color:#98c379;">'w'</span>) <span style="color:#c678dd;">as </span>data_file: <br/><br/>    json.<span style="color:#61afef;">dump</span>(data, data_file, <span style="color:#d19a66;">indent</span>=<span style="color:#d19a66;">4</span>)<br/><br/></pre></pre>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
