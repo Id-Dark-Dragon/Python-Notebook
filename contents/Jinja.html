@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Jinja</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Jinja">
+<hr/>
+<h3>Jinja</h3>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">TEMPLATING:</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">We can inject a header.html and footer.html using Jinja
+            and the code might look something like this:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">include </span><span style="color:#98c379;">"header.html" </span><span style="color:#e5c07b;">%}<br/></span>Web page content<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">include </span><span style="color:#98c379;">"footer.html" </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;"><br/></span></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">This is a really flexible way of using Jinja to
+            Template a website. It means that if your header and footer stay the same then you can just insert them into
+            all your webpages.</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;"><br/></p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">TEMPLATE INHERITANCE:</p><h4 style="box-sizing: border-box; font-family: inherit; font-weight: 500; line-height: 1.1; color: inherit; margin-top: 10px; margin-bottom: 10px; font-size: 18px;">
+<span style="font-size: 1.3rem;">However, often you'll find that you actually want to use the same design template for your entire website, but you might need to change some code in your header or footer. In these cases, it's better to use</span><span style="font-size: 1.3rem;"> </span><span style="font-size: 1.3rem; box-sizing: border-box; font-weight: 700;">Template Inheritance</span><span style="font-size: 1.3rem;"> </span><span style="font-size: 1.3rem;">instead.</span><br/></h4>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">Template inheritance is similar to Class inheritance,
+            you can take a parent template and extend its styling in your child web pages.</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">For example, if we create a base.html file that has the
+            following code:</span><br/></p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;">&lt;!DOCTYPE <span style="color:#d19a66;">html</span>&gt;<br/>&lt;<span style="color:#e06c75;">html </span><span style="color:#d19a66;">lang</span><span style="color:#98c379;">="en"</span>&gt;<br/>&lt;<span style="color:#e06c75;">head</span>&gt;<br/>    &lt;<span style="color:#e06c75;">meta </span><span style="color:#d19a66;">charset</span><span style="color:#98c379;">="UTF-8"</span>&gt;<br/>    &lt;<span style="color:#e06c75;">title</span>&gt;<span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">title </span><span style="color:#e5c07b;">%}{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}</span>&lt;/<span style="color:#e06c75;">title</span>&gt;<br/>&lt;/<span style="color:#e06c75;">head</span>&gt;<br/>&lt;<span style="color:#e06c75;">body</span>&gt;<br/>    <span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">content </span><span style="color:#e5c07b;">%}{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}<br/></span>&lt;/<span style="color:#e06c75;">body</span>&gt;<br/>&lt;/<span style="color:#e06c75;">html</span>&gt;<br/><br/></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">It has predefined areas (or blocks) where new content
+            can be inserted by a child webpage inheriting from this template.</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">We could re-write the success.html page to inherit from
+            this base.html template:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/>#1. This line of code tells the templating engine (Jinja) to use "base.html" as the template for this page.<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">extends </span><span style="color:#98c379;">"base.html" </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;"><br/></span>#2.This block inserts a custom title into the header of the template.<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">title </span><span style="color:#e5c07b;">%}</span>Success<span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;"><br/></span>#3.This block provides the content of the website. The part that is going to vary between webpages.<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">content </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;">   </span>&lt;<span style="color:#e06c75;">div </span><span style="color:#d19a66;">class</span><span style="color:#98c379;">="container"</span>&gt;<br/>      &lt;<span style="color:#e06c75;">h1</span>&gt;Top Secret &lt;/<span style="color:#e06c75;">h1</span>&gt;<br/>      &lt;<span style="color:#e06c75;">iframe </span><span style="color:#d19a66;">src</span><span style="color:#98c379;">="https://giphy.com/embed/Ju7l5y9osyymQ" </span><span style="color:#d19a66;">width</span><span style="color:#98c379;">="480" </span><span style="color:#d19a66;">height</span><span style="color:#98c379;">="360" </span><span style="color:#d19a66;">class</span><span style="color:#98c379;">="giphy-embed" </span><span style="color:#d19a66;">allowFullScreen</span>&gt;&lt;/<span style="color:#e06c75;">iframe</span>&gt;<br/>      &lt;<span style="color:#e06c75;">p</span>&gt;&lt;<span style="color:#e06c75;">a </span><span style="color:#d19a66;">href</span><span style="color:#98c379;">="https://giphy.com/gifs/rick-astley-Ju7l5y9osyymQ"</span>&gt;via GIPHY&lt;/<span style="color:#e06c75;">a</span>&gt;&lt;/<span style="color:#e06c75;">p</span>&gt;<br/>   &lt;/<span style="color:#e06c75;">div</span>&gt;<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;"><br/></span></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;"><br/></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">When we are inheriting templates, Sometimes, there's some part of the template that we want to keep, but we also want to add to it. So we can use super blocks in this case.</span><br/>
+</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">We add the following code to base.html:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/>&lt;<span style="color:#e06c75;">style</span>&gt;<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">styling </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e06c75;">body</span>{<br/>    background: <span style="color:#fefefe;background-color:#800080;">purple</span>;<br/>}<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}<br/></span>&lt;/<span style="color:#e06c75;">style</span>&gt;<br/><br/></pre>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">I named this block <span style='background-color: rgb(249, 242, 244); color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12.6px;'>styling</span> but
+            you can call it anything you want. <span style="font-size: 1.3rem;">Just make sure that you close all blocks with</span><span style="font-size: 1.3rem;"> </span><span style='background-color: rgb(249, 242, 244); color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12.6px;'>{% endblock %}</span>
+</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">Now if you reload your website, you should see that
+            child pages have a purple background.</p>
+<figure style="box-sizing: border-box; margin: 0px;"><span style="font-size: 1.3rem;">So now you can see how easy it is to modify all web
+            pages in your website if you use the same template. </span><br/></figure>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">If we want to give some of the pages, their own styling
+            in addition to the global style, we can use the 'super' function:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">block </span><span style="color:#d19a66;">styling </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;">   </span>{{ <span style="color:#d19a66;">super</span>() }}<br/>   h1 {<br/>      color:red;<br/>   }<br/><span style="color:#e5c07b;">{% </span><span style="color:#c678dd;">endblock </span><span style="color:#e5c07b;">%}<br/></span><span style="color:#e5c07b;"><br/></span></pre>
+<figure style="box-sizing: border-box; margin: 0px;"><br/></figure>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;"><br style='box-sizing: border-box; color: rgb(51, 51, 51); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);'/>
+</p>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+

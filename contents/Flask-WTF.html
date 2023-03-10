@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Flask-WTF</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Flask-WTF">
+<hr/>
+<h3>Flask-WTF</h3>
+<p>Flask-WTF is an extension to use WTForm integrated with Flask. WTForms is a flexible forms validation and
+            rendering library for python.</p>
+<p><a href="https://wtforms.readthedocs.io/en/2.3.x/" target="_blank">https://wtforms.readthedocs.io/en/2.3.x/</a>   
+                              
+            <a href="https://flask-wtf.readthedocs.io/en/1.0.x/" target="_blank">https://flask-wtf.readthedocs.io/en/1.0.x/</a></p>
+<p> How to start:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#c678dd;">from </span>flask <span style="color:#c678dd;">import </span>Flask<br/><span style="color:#c678dd;">from </span>flask_wtf <span style="color:#c678dd;">import </span>FlaskForm<br/><span style="color:#5c6370;"># You can add different kinds of inputs for you form,<br/></span><span style="color:#5c6370;"># and also different kinds of validators to check if the input data is invalid.<br/></span><span style="color:#c678dd;">from </span>wtforms <span style="color:#c678dd;">import </span>StringField, SubmitField, URLField, SelectField<br/><span style="color:#c678dd;">from </span>wtforms.validators <span style="color:#c678dd;">import </span>DataRequired, url<br/><br/><br/>app = <span style="color:#61afef;">Flask</span>(__name__)<br/><span style="color:#5c6370;"># You need to set a secret key.<br/></span>app.config[<span style="color:#98c379;">'SECRET_KEY'</span>] = <span style="color:#98c379;">'8BYkEfBA6O6donzWlSihBXox7C0sKR6b'<br/></span><span style="color:#98c379;"><br/></span><span style="color:#c678dd;">class </span><span style="color:#e5c07b;">CafeForm</span>(FlaskForm):<br/>    <span style="color:#5c6370;"># You need to put validators in a list. </span>To use EMAIL validator, we should install 'email_validator'.<span style="color:#5c6370;"><br/></span><span style="color:#5c6370;">    </span>cafe = <span style="color:#61afef;">StringField</span>(<span style="color:#98c379;">'Cafe name'</span>, <span style="color:#d19a66;">validators</span>=[<span style="color:#61afef;">DataRequired</span>()]) <br/>    loc = <span style="color:#61afef;">URLField</span>(<span style="color:#98c379;">'Location'</span>, <span style="color:#d19a66;">validators</span>=[<span style="color:#61afef;">DataRequired</span>(), <span style="color:#61afef;">url</span>()])<br/>    open = <span style="color:#61afef;">StringField</span>(<span style="color:#98c379;">'Open'</span>, <span style="color:#d19a66;">validators</span>=[<span style="color:#61afef;">DataRequired</span>()])<br/>    rating = <span style="color:#61afef;">SelectField</span>(<span style="color:#98c379;">'Coffee Rate'</span>, <span style="color:#d19a66;">validators</span>=[<span style="color:#61afef;">DataRequired</span>()], <span style="color:#d19a66;">choices</span>=[(<span style="color:#98c379;">'</span><span style="color:#98c379;font-family:'Courier New',monospace;">☕</span><span style="color:#98c379;">'</span>), (<span style="color:#98c379;">'</span><span style="color:#98c379;font-family:'Courier New',monospace;">☕☕</span><span style="color:#98c379;">'</span>)])<br/>    submit = <span style="color:#61afef;">SubmitField</span>(<span style="color:#98c379;">'Submit'</span>)<br/><br/></pre></pre></pre>
+<p>And here is how to pass the form and get hold of the input data (You can also use
+            'request.form.get("example")'):</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/add'</span>, <span style="color:#d19a66;">methods</span>=[<span style="color:#98c379;">'GET'</span>, <span style="color:#98c379;">'POST'</span>])<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">add_cafe</span>():<br/>    form = <span style="color:#61afef;">CafeForm</span>()<br/>    <span style="color:#c678dd;">if </span>form.<span style="color:#61afef;">validate_on_submit</span>():<br/>        <span style="color:#7f8591;">c </span>= form.cafe.data<br/>        l = form.loc.data<br/>        o = form.open.data<br/>    <span style="white-space:pre">	</span>return <span style="color: rgb(97, 175, 239);">redirect</span>(<span style="color: rgb(97, 175, 239);">url_for</span>(<span style="color: rgb(152, 195, 121);">'home'</span>))</pre><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#5c6370;">    </span><span style="color:#c678dd;">return </span><span style="color:#61afef;">render_template</span>(<span style="color:#98c379;">'add.html'</span>, <span style="color:#d19a66;">form</span>=form)</pre><pre style='font-family: "JetBrains Mono", monospace;'><br/></pre></pre>
+<p>For HTML page setup, you can use the manual way or use Flask-Bootstrap.  Here are examples:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;">&lt;<span style="color:#e06c75;">div </span><span style="color:#d19a66;">class</span><span style="color:#98c379;">="container"</span>&gt;<br/>    &lt;<span style="color:#e06c75;">h1</span>&gt;Login&lt;/<span style="color:#e06c75;">h1</span>&gt;<br/><span style="color:#5c6370;">&lt;!--    Manual way--&gt;<br/></span><span style="color:#5c6370;">    </span>&lt;<span style="color:#e06c75;">form </span><span style="color:#d19a66;">method</span><span style="color:#98c379;">="POST" </span><span style="color:#d19a66;">action</span><span style="color:#98c379;">={{url_for('login')}} </span><span style="color:#d19a66;">novalidate</span>&gt;<br/>        {{ form.csrf_token }}<br/>        &lt;<span style="color:#e06c75;">p</span>&gt;<br/>            {{ form.email.label }}&lt;<span style="color:#e06c75;">br</span>&gt; {{ form.email(size=30) }}<br/>            {%for err in form.email.errors%}<br/>            &lt;<span style="color:#e06c75;">span</span>&gt;{{err}}&lt;/<span style="color:#e06c75;">span</span>&gt;<br/>            {%endfor%}<br/>        &lt;<span style="color:#e06c75;">p</span>&gt;<br/>            {{ form.password.label }}&lt;<span style="color:#e06c75;">br</span>&gt; {{ form.password(size=30) }} &lt;<span style="color:#e06c75;">br</span>&gt;<br/>            {%for err in form.password.errors%}<br/>            &lt;<span style="color:#e06c75;">span</span>&gt;{{err}}&lt;/<span style="color:#e06c75;">span</span>&gt;<br/>            {{ form.summit }}<br/>            {%endfor%}<br/>        &lt;/<span style="color:#e06c75;">p</span>&gt;<br/><br/>    &lt;/<span style="color:#e06c75;">form</span>&gt;<br/><span style="color:#5c6370;">&lt;!--    Using flask-Bootsrap--&gt;<br/></span><span style="color:#5c6370;">    </span>{% from 'bootstrap5/form.html' import render_form %} <br/><br/>    {{ render_form(form) }}<br/>&lt;/<span style="color:#e06c75;">div</span>&gt;</pre>
+<p>Make sure to Flask-Bootstrap docs:  <a href="https://bootstrap-flask.readthedocs.io/en/stable/" target="_blank">https://bootstrap-flask.readthedocs.io/en/stable/</a>
+</p>
+<p>Some 'Validators' need to get installed separately such as email validator:(you also need to put it
+            separately in 'requirements.txt')</p>
+<pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;">pip install email_validator<br/></pre>
+<p>PREFILLED FORM:</p>
+<p>To present forms with some prerendered text in their fields, give the pre-info when you are making the form
+            object:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='color: rgb(187, 187, 187); font-family: "JetBrains Mono", monospace;'><span style="color:#5c6370;font-style:italic;"># 1.<br/></span>form = <span style="color:#61afef;">CreatePostForm</span>()<br/>form.title.default = post.title<br/>form.subtitle.default = post.subtitle<br/><br/><span style="color:#5c6370;font-style:italic;"># 2. a less useful way<br/></span>form = <span style="color:#61afef;">CreatePostForm</span>(<br/>    <span style="color:#d19a66;">title</span>=post.title,<br/>    <span style="color:#d19a66;">subtitle</span>=post.subtitle<br/>)<br/><br/></pre></pre>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+

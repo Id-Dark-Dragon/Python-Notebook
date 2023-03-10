@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>OS</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="os">
+<hr/>
+<h3>OS</h3>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">The OS module in Python provides functions for
+            interacting with the operating system. <a href="https://pypi.org/project/pipreqs/" target="_blank">
+                Docs</a></p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">OS.ENVIRON:</p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">It is one of its functions that allows us to work with
+            environmental variables.</p>
+<pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#5c6370;font-style:italic;"># Making or Modifying a Var.:    (you can also use .env to make environ vars using dotenv package)<br/></span>os.environ[<span style="color:#89ca78;">'JAVA_HOME'</span>] = <span style="color:#89ca78;">'/home / ihritik / jdk-10.0.1'</span></pre><span style="color:#89ca78;"><br/></span><span style="color:#5c6370;font-style:italic;"># Catching All in a Dictionary:<br/></span>pprint.<span style="color:#61afef;">pprint</span>(<span style="color:#2bbac5;">dict</span>(os.environ), <span style="color:#d19a66;">width </span>= <span style="color:#d19a66;">1</span>)<br/><br/><span style="color:#5c6370;font-style:italic;"># Accessing One:<br/></span>java_home = os.environ.<span style="color:#61afef;">get</span>(<span style="color:#89ca78;">'JAVA_HOME'</span>)<br/><br/><span style="color:#5c6370;font-style:italic;"># Throwing Something else if it Couldn't Find the Var. (like a string):<br/></span>os.environ.<span style="color:#61afef;">get</span>(<span style="color:#89ca78;">'MY_HOME'</span>, <span style="color:#89ca78;">"Environment variable does not exist"</span>)<br/>os.environ.<span style="color:#61afef;">get</span>(<span style="color:#89ca78;">"DATABASE_URL"</span>,  <span style="color:#89ca78;">"sqlite:///blog.db"</span>)</pre>
+<span style="font-size: 20.8px;">SOME OTHER METHODS:</span>
+<pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#5c6370;font-style:italic;"># Method to change the current working directory to the specified path.<br/></span>os.<span style="color:#61afef;">chdir</span>(<span style="color:#89ca78;">'E:/Tutorials/Code/6.Advanced/72 Day 72path'</span>)<br/><br/><span style="color:#5c6370;font-style:italic;"># Check the working directory<br/></span>os. <span style="color:#61afef;">getcwd</span>()<br/><br/><span style="color:#5c6370;font-style:italic;"># Make a new dir<br/></span>os.<span style="color:#61afef;">mkdir</span>(<span style="color:#d19a66;">path</span>=<span style="color:#89ca78;">"new folder"</span>)<br/><br/></pre></pre>
+<hr/>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+

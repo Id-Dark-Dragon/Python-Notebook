@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Flask(request)</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Flask(request)">
+<hr/>
+<h3>Flask(request)</h3>
+<p>By using flask.request you can get data from HTML pages to your python code.</p>
+<p>FORMS: This is an example of getting data from a HTML form:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">"/add"</span>, <span style="color:#d19a66;">methods</span>=[<span style="color:#98c379;">'POST'</span>, <span style="color:#98c379;">'GET'</span>])<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">add</span>():<br/>    <span style="color:#c678dd;">if </span>request.method == <span style="color:#98c379;">"POST"</span>:   <span style="color:#5c6370;">#IMPORTANT TO BE UPPERCASE.<br/></span><span style="color:#5c6370;">        </span><span style="color:#7f8591;">name </span>= request.form.get(<span style="color:#98c379;">'name'</span>)     #more practical than the below line.<br/>        <span style="color:#7f8591;">author </span>= request.form[<span style="color:#98c379;">'author'</span>]<br/>        <span style="color:#c678dd;">return </span><span style="color:#61afef;">redirect</span>(<span style="color:#61afef;">url_for</span>(<span style="color:#98c379;">'home'</span>))<br/>     <span style="color:#c678dd;">return </span><span style="color:#61afef;">render_template</span>(<span style="color:#98c379;">'add.html'</span>)<br/><br/></pre></pre>
+<p> in the HTML &lt;input&gt; tag you should add attribute 'name' equal to a name for the input, then you
+            can take it from the request method.</p>
+<p><br/></p>
+<p>You can also get the data you pass to the 'url_for' method:</p>
+<pre style='background-color: rgb(40, 44, 52); font-family: "JetBrains Mono", monospace;'><span style="color: rgb(171, 178, 191);"> <span style="color:#d19a66;">action</span>=<span style="color:#d19a66;">url_for</span>(<span style="color:#98c379;">'edit'</span>, <span style="color:#d19a66;">movie_id</span>=</span><font color="#d19a66">1</font><font color="#abb2bf">)</font></pre>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'>a = request.args.<span style="color:#61afef;">get</span>(<span style="color:#98c379;">"movie_id"</span>)</pre><pre style='font-family: "JetBrains Mono", monospace;'><span style="color: rgb(86, 182, 194);">print</span>(a)</pre><pre style='font-family: "JetBrains Mono", monospace;'>result &gt;&gt;&gt;&gt; 1</pre></pre>
+<p><br/></p>
+<p>PASSING VARIABLES TO FLASK API:<br/></p>
+<p>Assume that we are going to pass 'name' and 'age' from URL. There are two ways of doing this. Look at the
+            URLs, then script:</p>
+<pre class="brush: python; title: ; notranslate" style="border: 0px; margin-top: 0px; margin-bottom: 1.5em; padding: 20px; background: rgba(0, 0, 0, 0.05); font-family: inherit; font-size: 17px; line-height: normal; overflow: auto; max-width: 100%; box-sizing: border-box; color: rgb(61, 68, 89);" title=""><span style="font-family: inherit;">http://127.0.0.1:5000</span>/with_url_variables/Sergio/40</pre>
+<pre class="brush: python; title: ; notranslate" style="border: 0px; margin-top: 0px; margin-bottom: 1.5em; padding: 20px; background: rgba(0, 0, 0, 0.05); font-family: inherit; font-size: 17px; line-height: normal; overflow: auto; max-width: 100%; box-sizing: border-box; color: rgb(61, 68, 89);" title=""> http://127.0.0.1:5000/with_parameters?name=Sergio&amp;age=40</pre>
+<pre style='background-color: rgb(40, 44, 52); font-family: "JetBrains Mono", monospace;'><pre style='color: rgb(171, 178, 191); font-family: "JetBrains Mono", monospace;'><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/with_parameters'</span>)<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">with_parameters</span>():<br/>    name = request.args.<span style="color:#61afef;">get</span>(<span style="color:#98c379;">'name'</span>)<br/>    age = <span style="color:#56b6c2;">int</span>(request.args.<span style="color:#61afef;">get</span>(<span style="color:#98c379;">'age'</span>))<br/>    <span style="color:#c678dd;">return </span><span style="color:#61afef;">jsonify</span>(<span style="color:#d19a66;">message</span>=<span style="color:#98c379;">"My name is " </span>+ name + <span style="color:#98c379;">" and I am " </span>+ <span style="color:#56b6c2;">str</span>(age) + <span style="color:#98c379;">" years old"</span>)<br/><br/><br/><span style="color:#e5c07b;">@app.route</span>(<span style="color:#98c379;">'/with_url_variables/&lt;string:name&gt;/&lt;int:age&gt;'</span>)<br/><span style="color:#c678dd;">def </span><span style="color:#61afef;">with_url_variables</span>(<span style="color:#d19a66;">name</span>: <span style="color:#56b6c2;">str</span>, <span style="color:#d19a66;">age</span>: <span style="color:#56b6c2;">int</span>):<br/>    <span style="color:#c678dd;">return </span><span style="color:#61afef;">jsonify</span>(<span style="color:#d19a66;">message</span>=<span style="color:#98c379;">"My name is " </span>+ <span style="color:#d19a66;">name </span>+ <span style="color:#98c379;">" and I am " </span>+ <span style="color:#56b6c2;">str</span>(<span style="color:#d19a66;">age</span>) + <span style="color:#98c379;">" years old"</span>)<br/><br/></pre></pre>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
