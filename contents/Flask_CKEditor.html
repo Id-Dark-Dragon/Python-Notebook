@@ -29,6 +29,9 @@
 <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">HTML codes should be similar to these:</span>
 </p>
 <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style='font-family: "JetBrains Mono", monospace;'><pre style='font-family: "JetBrains Mono", monospace;'>  <br/>   &lt;<span style="color:#e06c75;">div</span>&gt;<br/>    {{ <span style="color:#d19a66;">ckeditor</span>.<span style="color:#d19a66;">load</span>() }}<br/>    {{ <span style="color:#d19a66;">ckeditor</span>.<span style="color:#d19a66;">config</span>(<span style="color:#d19a66;">name</span>=<span style="color:#98c379;">'body'</span>) }}<br/>    {{ <span style="color:#d19a66;">wtf</span>.<span style="color:#d19a66;">quick_form</span>(<span style="color:#d19a66;">form</span>) }}<br/>  &lt;/<span style="color:#e06c75;">div</span>&gt;<br/></pre><span style="color:#c678dd;">                </span><span style="color:#c678dd;">             </span></pre></pre>
+<span style="font-size: 20.8px;">Then we can save this data to the database the same we behave with the other fields in the form.</span>
+<span style="font-size: 20.8px;">To be able to show our text again in the way we styled it, we should use a jinja filter called 'safe':</span>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"> &lt;<span style="color:#e06c75;">div</span>&gt;<br/>     {{ <span style="color:#d19a66;">post</span>.<span style="color:#d19a66;">body</span>|<span style="color:#d19a66;">safe </span>}}  # if we do not use safe, all html elements would be shown.<br/>&lt;/<span style="color:#e06c75;">div</span>&gt;</pre>
 </section>
 <!--Till Here-->
 
