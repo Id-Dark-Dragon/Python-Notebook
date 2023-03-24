@@ -209,7 +209,7 @@
             style="color:#89ca78;">'{:,.2f}'</span>.format  <span style="color:#5c6370;font-style:italic;"># make floats look neater.<br></span>df.<span
             style="color:#61afef;">groupby</span>(<span style="color:#89ca78;">"TAG"</span>)[<span
             style="color:#89ca78;">'POSTS'</span>].<span
-            style="color:#61afef;">mean</span>()                       <span style="color:#5c6370;font-style:italic;"># gets average<br></span>assembly        <span
+            style="color:#61afef;">mean</span>()                       <span style="color:#5c6370;font-style:italic;"># gets average. "median()" also exists for median.<br></span>assembly        <span
             style="color:#d19a66;">242.03<br></span>c             <span style="color:#d19a66;">2</span>,<span
             style="color:#d19a66;">333.62<br></span>c++           <span style="color:#d19a66;">4</span>,<span
             style="color:#d19a66;">751.46<br></span>delphi          <span style="color:#d19a66;">320.92<br></span>go              <span
@@ -288,6 +288,17 @@
             style="color:#d19a66;">743.0<br></span>java                        NaN  ...              <span
             style="color:#d19a66;">12723.0<br></span>javascript                  NaN  ...              <span
             style="color:#d19a66;">23802.0<br></span>...<br></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 20.8px;"><br></span></p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 20.8px;">"STACK" function makes rows out of columns,&nbsp;The function is named by analogy with a collection of books being reorganized from being side by side on a horizontal position (the columns of the dataframe) to being stacked vertically on top of each other (in the index of the dataframe).&nbsp; &nbsp; <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html#pandas-dataframe-stack" target="_blank">doc</a></span>
+    </p>
+    <pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br>df.<span
+            style="color:#61afef;">head</span>()<br><br>     weight height<br>cat       <span style="color:#d19a66;">0      1<br></span>dog       <span
+            style="color:#d19a66;">2      3<br></span><span style="color:#d19a66;"><br></span><span
+            style="color:#d19a66;"><br></span>df.<span style="color:#61afef;">stack</span>()<br><br>cat  weight    <span
+            style="color:#d19a66;">0<br></span><span style="color:#d19a66;">     </span>height    <span
+            style="color:#d19a66;">1<br></span>dog  weight    <span style="color:#d19a66;">2<br></span><span
+            style="color:#d19a66;">     </span>height    <span style="color:#d19a66;">3<br></span><span
+            style="color:#d19a66;"><br></span></pre>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><br></p>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;">"AGG" is used to perform different operations on one or
         more columns of a DataFrame. This function can be applied to a DataFrames or&nbsp; Series or chained with
@@ -371,7 +382,8 @@
             style="color:#61afef;">first</span>()<br>                                                         .<span
             style="color:#61afef;">mean</span>() <span style="color:#5c6370;font-style:italic;"># Takes the average data of the month.<br></span></pre></pre>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;"><br></span></p>
-    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">"MERGE" function merges two data frames based on a common key or id:&nbsp; <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html?highlight=merge#pandas.DataFrame.merge">doc</a></span>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">"MERGE" function merges two data frames based on a common key or id:&nbsp; <a
+            href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html?highlight=merge#pandas.DataFrame.merge">doc</a></span>
     </p>
     <pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br>mg_df = pd.<span
             style="color:#61afef;">merge</span>(set_df_theme_count, theme_df, <span
@@ -379,6 +391,19 @@
             style="color:#5c6370;font-style:italic;"># "id" is a common column  between both DFs, <br></span><span
             style="color:#5c6370;font-style:italic;"># the values which are not common in "id", would be ignored in new DF.<br></span><span
             style="color:#5c6370;font-style:italic;"><br></span></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;"><br></span></p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">"STR" functions help to work on series with string:</span>
+    </p>
+    <pre style="background-color: rgb(40, 44, 52); color: rgb(187, 187, 187); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"><span style="color:#5c6370;font-style:italic;"># Replacing somthing in str.<br></span><span
+            style="color:#5c6370;font-style:italic;"># here we wanted to delete "," from string.<br></span>df[<span
+            style="color:#89ca78;">"A"</span>] = df[<span style="color:#89ca78;">"A"</span>].str.<span
+            style="color:#61afef;">replace</span>(<span style="color:#89ca78;">","</span>, <span style="color:#89ca78;">""</span>)<br><br><span
+            style="color:#5c6370;font-style:italic;"># Splitting string<br></span><span
+            style="color:#5c6370;font-style:italic;"># here we split the string where ";" is placed. it also expands the seperated parts in new columns by "expand=True".<br></span>df.column.str.<span
+            style="color:#61afef;">split</span>(<span style="color:#89ca78;">';'</span>, <span style="color:#d19a66;">expand</span>=<span
+            style="color:#d55fde;font-style:italic;">True</span>)<br></pre><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"><br></pre></pre>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;"><br></span></p>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">Some methods to take an output:</span>
     </p>
@@ -401,13 +426,8 @@
             style="font-family: &quot;JetBrains Mono&quot;, monospace;"><span style="color:#5c6370;font-style:italic;"># Changing data types using astype().<br></span>df[<span
             style="color:#89ca78;">'A'</span>] = df[<span style="color:#89ca78;">'A'</span>].<span
             style="color:#61afef;">astype</span>(<span style="color:#2bbac5;">float</span>)<br><span
-            style="color:#5c6370;font-style:italic;"># to_numeric() is another method that can also handle NaN values but astype() is more universal.<br></span></pre></pre>
-    <pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><span
-            style="color:#5c6370;font-style:italic;"># Replacing somthing in values.<br></span><span
-            style="color:#5c6370;font-style:italic;"># here we wanted to delete "," from numbers.<br></span>df[<span
-            style="color:#89ca78;">"A"</span>] = df[<span style="color:#89ca78;">"A"</span>].str.<span
-            style="color:#61afef;">replace</span>(<span style="color:#89ca78;">","</span>, <span style="color:#89ca78;">""</span>) <span
-            style="color:#5c6370;font-style:italic;"># in pandas objects we can not use '.replace()' without '.str'<br></span></pre>
+            style="color:#5c6370;font-style:italic;"># to_numeric() is another method that can also handle NaN values but astype() is more universal.</span></pre></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;"><br></span></p>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">ROLLING AVERAGE</span>
     </p>
     <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 1.3rem;">It is the simple mean of the last ‘n’ values. It usually can be used to make smoother data charts.</span>
