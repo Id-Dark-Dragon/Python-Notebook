@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Working With Dictionaries</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Working With Dictionaries">
+<hr>
+<h3>Working With Dictionaries</h3>
+<p>MAKING DICTIONARIES:</p><p>By "dict" Function:</p><pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><span style="color:#5c6370;font-style:italic;"># Create a dictionary from a list of tuples<br></span>data = [(<span style="color:#89ca78;">'a'</span>, <span style="color:#d19a66;">1</span>), (<span style="color:#89ca78;">'b'</span>, <span style="color:#d19a66;">2</span>), (<span style="color:#89ca78;">'c'</span>, <span style="color:#d19a66;">3</span>)]<br>d = <span style="color:#2bbac5;">dict</span>(data)<br><br><br><span style="color:#5c6370;font-style:italic;"># Create a dictionary from a list of lists<br></span>data = [[<span style="color:#89ca78;">'a'</span>, <span style="color:#d19a66;">1</span>], [<span style="color:#89ca78;">'b'</span>, <span style="color:#d19a66;">2</span>], [<span style="color:#89ca78;">'c'</span>, <span style="color:#d19a66;">3</span>]]<br>d = <span style="color:#2bbac5;">dict</span>(data)<br><br><br><span style="color:#5c6370;font-style:italic;"># Create a dictionary from keyword arguments<br></span>d = <span style="color:#2bbac5;">dict</span>(<span style="color:#d19a66;">a</span>=<span style="color:#d19a66;">1</span>, <span style="color:#d19a66;">b</span>=<span style="color:#d19a66;">2</span>, <span style="color:#d19a66;">c</span>=<span style="color:#d19a66;">3</span>)                           <span style="color:#5c6370;font-style:italic;"># Keys won't need to be inside quotation marks.<br></span><span style="color:#5c6370;font-style:italic;"><br></span><span style="color:#5c6370;font-style:italic;"><br></span><span style="color:#5c6370;font-style:italic;"># THEY ALL RESULT THE SAME:<br></span>result &gt;&gt;&gt;&gt; {<span style="color:#89ca78;">'a'</span>: <span style="color:#d19a66;">1</span>, <span style="color:#89ca78;">'b'</span>: <span style="color:#d19a66;">2</span>, <span style="color:#89ca78;">'c'</span>: <span style="color:#d19a66;">3</span>}</pre>
+<p>Using Two Separate Lists:</p>
+<pre style="background-color: rgb(40, 44, 52); font-family: &quot;JetBrains Mono&quot;, monospace; color: rgb(171, 178, 191);"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="color: rgb(187, 187, 187); font-family: &quot;JetBrains Mono&quot;, monospace;">num = [<span style="color:#d19a66;">1</span>, <span style="color:#d19a66;">2</span>, <span style="color:#d19a66;">3</span>, <span style="color:#d19a66;">4</span>, <span style="color:#d19a66;">5</span>]<br>alp = [<span style="color:#89ca78;">'a'</span>, <span style="color:#89ca78;">'b'</span>, <span style="color:#89ca78;">'c'</span>]<br><br><span style="color:#5c6370;font-style:italic;"># Using for loop<br></span>dict1 = {}<br><span style="color:#d55fde;font-style:italic;">for </span>num, alp <span style="color:#d55fde;font-style:italic;">in </span><span style="color:#2bbac5;">zip</span>(num, alp):     <span style="color:#5c6370;font-style:italic;"># "zip" makes multiple lists iterable at the same time.<br></span><span style="color:#5c6370;font-style:italic;">    </span>dict1[num] = alp<br><br><span style="color:#5c6370;font-style:italic;"># Using dictionary comprehension<br></span>dict1 = {num: alp <span style="color:#d55fde;font-style:italic;">for </span>num, alp <span style="color:#d55fde;font-style:italic;">in </span><span style="color:#2bbac5;">zip</span>(num, alp)}<br><br><span style="color:#5c6370;font-style:italic;"># Using "dict" function<br></span>dict1 = <span style="color:#2bbac5;">dict</span>(<span style="color:#2bbac5;">zip</span>(num, alp))<br><br><br><span style="color:#2bbac5;">print</span>(dict1)<br><br>result &gt;&gt;&gt;&gt;  {<span style="color:#d19a66;">1</span>: <span style="color:#89ca78;">'a'</span>, <span style="color:#d19a66;">2</span>: <span style="color:#89ca78;">'b'</span>, <span style="color:#d19a66;">3</span>: <span style="color:#89ca78;">'c'</span>}<br><br></pre></pre></pre>
+<p>ADDING, UPDATING, REMOVING:</p>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style="color: rgb(187, 187, 187); font-family: &quot;JetBrains Mono&quot;, monospace;">dict2 = <span style="color:#2bbac5;">dict</span>(<span style="color:#d19a66;">Sam</span>=<span style="color:#d19a66;">1</span>, <span style="color:#d19a66;">Ali</span>=<span style="color:#d19a66;">2</span>)<br><br><span style="color:#5c6370;font-style:italic;"># Add or Update an item in the dictionary<br></span>dict2[<span style="color:#89ca78;">"Ali"</span>] = <span style="color:#d19a66;">3<br></span><span style="color:#d19a66;"><br></span><span style="color:#5c6370;font-style:italic;"># Delete an item from the dictionary<br></span><span style="color:#d55fde;font-style:italic;">del </span>dict2[<span style="color:#89ca78;">'Ali'</span>]<br><br></pre></pre>
+<span style="font-size: 20.8px;">ITERATE OVER A DICTIONARY:</span><span style="font-size: 20.8px;"><br></span><pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><span style="color:#d55fde;font-style:italic;">for </span>key, value <span style="color:#d55fde;font-style:italic;">in </span>dict3.<span style="color:#61afef;">items</span>():<br>    <span style="color:#2bbac5;">print</span>(key, value)</pre>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
