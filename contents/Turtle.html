@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Turtle</title>
+</head>
+
+<body>
+<header id="header">
+    <h1>Python Notebook</h1>
+    <button onclick="darkMode()">Darkmode</button>
+    <button onclick="lightMode()">LightMode</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top" style="display: block;">Top</button>
+</header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Turtle">
+    <hr>
+    <h3>Turtle</h3>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">Turtle is a Python module that provides a drawing
+        board-like feature, which enables users to create pictures and shapes.<a
+                href="https://docs.python.org/3/library/turtle.html" target="_blank">
+            Docs</a></p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">To See Some Basics, Look At The Following Code Which Draws
+        A Random Shape:</p>
+    <pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"></pre><pre
+            style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"><span style="color:#c678dd;">from </span>turtle <span
+            style="color:#c678dd;">import </span>Turtle, Screen<br><br><span
+            style="color:#5c6370;"># SCREEN WORKS<br></span>screen = <span style="color:#61afef;">Screen</span>()<br>screen.<span
+            style="color:#61afef;">setup</span>(<span style="color:#d19a66;">width</span>=<span style="color:#d19a66;">500</span>, <span
+            style="color:#d19a66;">height</span>=<span style="color:#d19a66;">400</span>)    <span
+            style="color:#5c6370;"># Turtle starting point would be at (250, 200)<br></span><span
+            style="color:#5c6370;"><br></span><span style="color:#5c6370;"><br></span><span style="color:#5c6370;"># MAKING ONE TURTLE<br></span>tim = <span
+            style="color:#61afef;">Turtle</span>(<span style="color:#d19a66;">shape</span>=<span style="color:#98c379;">"turtle"</span>)<br><br>tim.<span
+            style="color:#61afef;">color</span>(<span style="color:#98c379;">"cyan"</span>, <span
+            style="color:#98c379;">"red"</span>)<br>tim.<span style="color:#61afef;">speed</span>(<span
+            style="color:#98c379;">"slowest"</span>)<br>tim.<span style="color:#61afef;">pensize</span>(<span
+            style="color:#d19a66;">10</span>)     <span style="color:#5c6370;"># line width<br></span><span
+            style="color:#5c6370;"><br></span><span style="color:#5c6370;"># 1.    Puts a dot with radius of 20 and goes to wanted location.<br></span>tim.<span
+            style="color:#61afef;">dot</span>(<span style="color:#d19a66;">20</span>)<br>tim.<span
+            style="color:#61afef;">goto</span>(<span style="color:#d19a66;">0</span>, <span
+            style="color:#d19a66;">30</span>)<br><br><span style="color:#5c6370;"># 2.    Makes a dashed-like line.<br></span>tim.<span
+            style="color:#61afef;">forward</span>(<span style="color:#d19a66;">50</span>)<br>tim.<span
+            style="color:#61afef;">penup</span>()<br>tim.<span style="color:#61afef;">forward</span>(<span
+            style="color:#d19a66;">50</span>)<br>tim.<span style="color:#61afef;">pendown</span>()<br>tim.<span
+            style="color:#61afef;">forward</span>(<span style="color:#d19a66;">50</span>)<br><br><span
+            style="color:#5c6370;"># 3.    Turns 100 degrees to the left and goes 100 units, then draws a circle.<br></span>tim.<span
+            style="color:#61afef;">left</span>(<span style="color:#d19a66;">100</span>)<br>tim.<span
+            style="color:#61afef;">forward</span>(<span style="color:#d19a66;">100</span>)<br>tim.<span
+            style="color:#61afef;">circle</span>(<span style="color:#d19a66;">50</span>)<br><br><span
+            style="color:#5c6370;"># 4.    Sets the head 20 degrees from the horizon and goes.<br></span>tim.<span
+            style="color:#61afef;">setheading</span>(<span style="color:#d19a66;">20</span>)<br>tim.<span
+            style="color:#61afef;">forward</span>(<span style="color:#d19a66;">100</span>)<br><br><span
+            style="color:#5c6370;"># 5.    Backs to first place and clears the screen<br></span>tim.<span
+            style="color:#61afef;">home</span>()<br>tim.<span style="color:#61afef;">clear</span>()<br><br>screen.<span
+            style="color:#61afef;">exitonclick</span>()<br></pre></pre></pre></pre>
+    <span style="font-size: 20.8px;">Controlling The Turtle (after the&nbsp;program&nbsp;initialization):</span>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br><span
+            style="color:#c678dd;">def </span><span style="color:#61afef;">go_up</span>():<br>    tim.<span
+            style="color:#61afef;">setheading</span>(<span style="color:#d19a66;">90</span>)<br>    tim.<span
+            style="color:#61afef;">forward</span>(<span style="color:#d19a66;">10</span>)<br><br>screen.<span
+            style="color:#61afef;">listen</span>()<br>screen.<span style="color:#61afef;">onkey</span>(go_up, <span
+            style="color:#98c379;">"Up"</span>) <br><br></pre>
+    <span style="font-size: 20.8px;">Prompt For Input:</span>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br>name = screen.<span
+            style="color:#61afef;">textinput</span>(<span style="color:#d19a66;">title</span>=<span
+            style="color:#98c379;">"title"</span>, <span style="color:#d19a66;">prompt</span>=<span
+            style="color:#98c379;">"enter your name"</span>)<br><br></pre>
+    <span style="font-size: 20.8px;">Writing On Screen:&nbsp;</span>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br>tim.<span
+            style="color:#61afef;">write</span>(<span style="color:#98c379;">"text"</span>, <span
+            style="color:#d19a66;">align</span>=<span
+            style="color:#98c379;">"center"</span>, <span style="color:#d19a66;">font</span>=(<span
+            style="color:#98c379;">"arial"</span>, <span
+            style="color:#d19a66;">80</span>, <span style="color:#98c379;">"bold"</span>))<br><br></pre>
+    <span style="font-size: 20.8px;">There are many more you can do with it to make simple games. Use Documentation.</span>
+</section>
+<!--Till Here-->
+
+<footer id="footer">
+    <hr>
+    <p><a href="https://github.com/Id-Dark-Dragon" target="_blank">By Ehsan Rahmani</a></p>
+</footer>
+
+
+</body>
+</html>
+
+
+

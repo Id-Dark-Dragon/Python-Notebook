@@ -10,16 +10,16 @@
             $("#footer").load("bases/uni-footer.html")
         });
     </script>
-    <title>Get hold of values of Function variables(local) and nested functions</title>
+    <title>Get Hold Of Function Vars(local) And Nested Functions</title>
 </head>
 
 <body>
 <header id="header"></header>
 
 <!--The Documentation Section Goes Here-->
-<section id="get hold of values of Function variables(local) and nested functions">
+<section id="Get Hold Of Function Vars(local) And Nested Functions">
 <hr/>
-<h3>Get hold of values of Function variables(local) and nested functions</h3>
+<h3>Get Hold Of Function Vars(local) And Nested Functions</h3>
 <p>You can not hold function variables in the way we behave with class variables(attributes):</p>
 <pre style='background-color: rgb(40, 44, 52); font-family: "JetBrains Mono", monospace; color: rgb(171, 178, 191);'><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#c678dd;">class </span><span style="color:#e5c07b;">Class1</span>:<br/><br/>    <span style="color:#c678dd;">def </span><span style="color:#61afef;">__init__</span>(<span style="color:#c678dd;">self</span>):<br/>        <span style="color:#c678dd;">self</span>.name = <span style="color:#c678dd;">None<br/></span><span style="color:#c678dd;">        self</span>.age = <span style="color:#c678dd;">None<br/></span><span style="color:#c678dd;">        self</span>.<span style="color:#61afef;">fun1</span>()<br/><br/>    <span style="color:#c678dd;">def </span><span style="color:#61afef;">fun1</span>(<span style="color:#c678dd;">self</span>):<br/>        <span style="color:#c678dd;">self</span>.name = <span style="color:#98c379;">'Ali'<br/></span><span style="color:#98c379;">        </span><span style="color:#c678dd;">self</span>.age = <span style="color:#d19a66;">20<br/></span><span style="color:#d19a66;"><br/></span><span style="color:#56b6c2;">print</span>(<span style="color:#61afef;">Class1</span>().name)<br/><br/>result&gt;&gt;&gt;&gt; Ali</pre><pre style='font-family: "JetBrains Mono", monospace;'><br/></pre></pre>
 <pre style='background-color: rgb(40, 44, 52); font-family: "JetBrains Mono", monospace; color: rgb(171, 178, 191);'><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#c678dd;">def </span><span style="color:#61afef;">fun1</span>():<br/>    <span style="color:#7f8591;">name </span>= <span style="color:#98c379;">'Ali'<br/></span><span style="color:#98c379;">    </span><span style="color:#7f8591;">age </span>= <span style="color:#d19a66;">20</span></pre><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#d19a66;"><br/></span><span style="color:#56b6c2;">print</span>(<span style="color:#61afef;">fun1</span>().name)<br/><br/>result&gt;&gt;&gt;&gt; AttributeError: <span style="color:#e5c07b;">'NoneType' </span><span style="color:#56b6c2;">object </span>has no attribute <span style="color:#98c379;">'name'</span></pre><pre style='font-family: "JetBrains Mono", monospace;'><span style="color:#98c379;"><br/></span></pre></pre>
