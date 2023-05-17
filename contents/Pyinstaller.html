@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Pyinstaller</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Pyinstaller">
+<hr>
+<h3>Pyinstaller</h3>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">Pyinstaller helps you to make the executable file of your python project which can be used in every computer without installing python. <a href="https://pyinstaller.org/en/stable/" target="_blank">
+                Docs</a>  -  <a href="https://realpython.com/pyinstaller-python/" ,="" target="_blank">Real python entry</a></p>
+<p style="box-sizing: border-box; margin: 0px 0px 10px;">After the first use, it generates a "<span style="background-color: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;liberation mono&quot;, &quot;courier new&quot;, monospace; font-size: 19.4906px; white-space: pre-wrap;">.spec</span><span style="font-size: 1.3rem;">" file which is a python file that calls Py</span><span style="font-size: 20.8px;">installer</span><span style="font-size: 1.3rem;">&nbsp;API, It is customizable and makes the </span><span style="font-size: 20.8px;">future</span><span style="font-size: 1.3rem;">&nbsp;executes faster.</span></p><p style="box-sizing: border-box; margin: 0px 0px 10px;">Basic File Making Prompt Inside Shell:</p><pre style="background-color: rgb(40, 44, 52); color: rgb(187, 187, 187); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><br>pyinstaller main.py --name myapp    # "__name" is an option name the app<br><br></pre></pre></pre></pre><p style="box-sizing: border-box; margin: 0px 0px 10px;">Options:</p><pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><br>--onefile                          # Package your entire application into a single executable file.<br>--hidden-import=selenium           # List multiple top-level imports that PyInstaller was unable to detect automatically.<br>--add-data folder/version.txt      # Instruct PyInstaller to insert additional data files into your build.<br>--exclude-module=pytest            # Exclude some modules from being included with your executable.<br>-w                                 # Avoid automatically opening a console window.<br></pre></pre></pre></pre>
+
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
