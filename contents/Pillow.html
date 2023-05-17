@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Pillow</title>
+</head>
+
+<body>
+<header id="header">
+    <h1>Python Notebook</h1>
+    <button onclick="darkMode()">Darkmode</button>
+    <button onclick="lightMode()">LightMode</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top" style="display: block;">Top</button>
+</header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Pillow">
+    <hr>
+    <h3>Pillow</h3>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">The Python Imaging Library adds image processing capabilities to your Python interpreter.<a href="https://pillow.readthedocs.io/en/stable/" target="_blank">
+            Docs</a>  -  <a href="https://realpython.com/image-processing-with-the-python-pillow-library/" target="_blank">Real python entry</a></p><pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;">pip install Pillow</pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">SOME BASICS:</p><pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><span style="color:#c678dd;">from </span>PIL <span style="color:#c678dd;">import </span>Image<br><br><span style="color:#5c6370;"># Open, Save, Show Images<br></span>Image.<span style="color:#61afef;">open</span>(<span style="color:#98c379;">"pic.t.png"</span>)<br>pic1.<span style="color:#61afef;">save</span>(<span style="color:#98c379;">"pic.png"</span>)<br>pic1.<span style="color:#61afef;">show</span>()<br><br><br><span style="color:#5c6370;"># Paste a picture on another<br></span>image_1.<span style="color:#61afef;">paste</span>(image_2, <span style="color:#d19a66;">box</span>=(<span style="color:#d19a66;">250</span>,<span style="color:#d19a66;">100</span>), <span style="color:#d19a66;">mask</span>=image_2) <br>                        <span style="color:#5c6370;"># "box" is the coordination of 'image_1' we want to paste 'image_2' there.<br></span><span style="color:#5c6370;">                        </span></pre></pre></pre></pre></section>
+<!--Till Here-->
+
+<footer id="footer">
+    <hr>
+    <p><a href="https://github.com/Id-Dark-Dragon" target="_blank">By Ehsan Rahmani</a></p>
+</footer>
+
+
+</body>
+</html>
+
+
+
