@@ -64,7 +64,7 @@
             style="color:#61afef;">forward</span>(<span style="color:#d19a66;">100</span>)<br><br><span
             style="color:#5c6370;"># 5.    Backs to first place and clears the screen<br></span>tim.<span
             style="color:#61afef;">home</span>()<br>tim.<span style="color:#61afef;">clear</span>()<br><br>screen.<span
-            style="color:#61afef;">exitonclick</span>()<br></pre></pre></pre></pre>
+            style="color:#61afef;">mainloop</span>()<br></pre></pre></pre></pre>
     <span style="font-size: 20.8px;">Controlling The Turtle (after the&nbsp;program&nbsp;initialization):</span>
     <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br><span
             style="color:#c678dd;">def </span><span style="color:#61afef;">go_up</span>():<br>    tim.<span
@@ -77,14 +77,23 @@
             style="color:#61afef;">textinput</span>(<span style="color:#d19a66;">title</span>=<span
             style="color:#98c379;">"title"</span>, <span style="color:#d19a66;">prompt</span>=<span
             style="color:#98c379;">"enter your name"</span>)<br><br></pre>
-    <span style="font-size: 20.8px;">Writing On Screen:&nbsp;</span>
-    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><br>tim.<span
-            style="color:#61afef;">write</span>(<span style="color:#98c379;">"text"</span>, <span
-            style="color:#d19a66;">align</span>=<span
-            style="color:#98c379;">"center"</span>, <span style="color:#d19a66;">font</span>=(<span
-            style="color:#98c379;">"arial"</span>, <span
-            style="color:#d19a66;">80</span>, <span style="color:#98c379;">"bold"</span>))<br><br></pre>
-    <span style="font-size: 20.8px;">There are many more you can do with it to make simple games. Use Documentation.</span>
+&nbsp;<span style="font-size: medium;">Writing On Screen:</span>
+        <pre style="font-size: medium; background-color: rgb(40, 44, 52); color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><br>tim.<span
+                style="color: rgb(97, 175, 239);">write</span>(<span
+                style="color: rgb(152, 195, 121);">"text"</span>, <span style="color: rgb(209, 154, 102);">align</span>=<span
+                style="color: rgb(152, 195, 121);">"center"</span>, <span style="color: rgb(209, 154, 102);">font</span>=(<span
+                style="color: rgb(152, 195, 121);">"arial"</span>, <span
+                style="color: rgb(209, 154, 102);">80</span>, <span
+                style="color: rgb(152, 195, 121);">"bold"</span>))<br><br></pre>
+
+    <span style="font-size: 20.8px;">Controlling&nbsp;each frame&nbsp;in game animation:&nbsp;</span>
+<pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre
+        style="font-family: &quot;JetBrains Mono&quot;, monospace;"><span style="color:#5c6370;"># Put a "tracer" after initializing the window.<br></span>window.<span
+        style="color:#61afef;">tracer</span>(<span style="color:#d19a66;">0</span>) <br><br><span
+        style="color:#5c6370;"># Whenever you want to update the screen, use "update" method.<br></span><span
+        style="color:#5c6370;"># It's usually used at the end of a loop<br></span>window.<span style="color:#61afef;">update</span>()<br><br></pre></pre>
+<span style="font-size: 20.8px;">There are many more you can do with it to make simple games. Use Documentation.</span>
+
 </section>
 <!--Till Here-->
 
