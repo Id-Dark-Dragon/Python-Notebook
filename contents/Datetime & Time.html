@@ -1,0 +1,130 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Datetime & Time</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Datetime &amp; Time">
+    <hr>
+    <h3>Datetime &amp; Time</h3>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><span style="font-size: 20.8px;">*DATETIME</span></p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">The datetime module in Python supplies classes for
+        manipulating dates and times. It provides 4 main objects for date and time operations: datetime, date, time and
+        timedelta.&nbsp;<a href="https://docs.python.org/3/library/datetime.html"
+                           target="_blank">docs</a>&nbsp;-&nbsp;<a
+                href="https://www.w3schools.com/python/python_datetime.asp" target="_blank">brief doc</a>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">datetime:</p>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><div
+            style="color: rgb(187, 187, 187);"><br><span style="color:#5c6370;font-style:italic;"># Get the current date and time<br></span>now = datetime.datetime.<span
+            style="color:#61afef;">now</span><span style="color:#e8ba36;">()<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span>now<span style="color:#e8ba36;">)<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span>now.year<span style="color:#e8ba36;">)<br></span><span
+            style="color:#2bbac5;">print</span><span style="color:#e8ba36;">(</span>now.second<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br><span
+            style="color:#d19a66;">2023</span>-<span style="color:#d19a66;">07</span>-<span
+            style="color:#d19a66;">25 19</span>:<span style="color:#e5c07b;">59</span>:<span style="color:#d19a66;">19.161180<br></span><span
+            style="color:#d19a66;">2023<br></span><span style="color:#d19a66;">19<br></span><span
+            style="color:#d19a66;"><br></span><span style="color:#d19a66;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Format datetime object as string<br></span><span
+            style="color:#2bbac5;">print</span><span style="color:#e8ba36;">(</span>now.<span style="color:#61afef;">strftime</span><span
+            style="color:#54a857;">(</span><span style="color:#89ca78;">"%m-%d %H"</span><span
+            style="color:#54a857;">)</span><span style="color:#e8ba36;">)<br></span><span
+            style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br><span style="color:#d19a66;">07</span>-<span
+            style="color:#d19a66;">25 19<br></span><span style="color:#d19a66;"><br></span><span style="color:#d19a66;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Get current date<br></span><span
+            style="color:#2bbac5;">print</span><span style="color:#e8ba36;">(</span>datetime.date.<span
+            style="color:#61afef;">today</span><span style="color:#54a857;">()</span><span style="color:#e8ba36;">)<br></span><span
+            style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br><span style="color:#d19a66;">2023</span>-<span
+            style="color:#d19a66;">07</span>-<span style="color:#d19a66;">25<br></span><span style="color:#d19a66;"><br></span><span
+            style="color:#d19a66;"><br></span><span style="color:#5c6370;font-style:italic;"># Get date from a timestamp<br></span>timestamp = <span
+            style="color:#d19a66;">1627237200<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span>datetime.datetime.<span style="color:#61afef;">fromtimestamp</span><span
+            style="color:#54a857;">(</span>timestamp<span style="color:#54a857;">)</span><span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br><span
+            style="color:#d19a66;">2021</span>-<span style="color:#d19a66;">07</span>-<span
+            style="color:#d19a66;">25 21</span>:<span style="color:#e5c07b;">50</span>:<span
+            style="color:#d19a66;">00<br></span><span style="color:#d19a66;"><br></span></div><br></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">date:</p>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre
+            style="font-family: &quot;JetBrains Mono&quot;, monospace;"><div
+            style="color: rgb(187, 187, 187);"><br><span style="color:#5c6370;font-style:italic;"># Create a date object<br></span>date1 = datetime.<span
+            style="color:#61afef;">date</span><span style="color:#e8ba36;">(</span><span
+            style="color:#d19a66;">2023</span>, <span style="color:#d19a66;">7</span>, <span
+            style="color:#d19a66;">25</span><span style="color:#e8ba36;">)<br></span>date2 = datetime.<span
+            style="color:#61afef;">date</span><span style="color:#e8ba36;">(</span><span
+            style="color:#d19a66;">2023</span>, <span style="color:#d19a66;">7</span>, <span
+            style="color:#d19a66;">30</span><span style="color:#e8ba36;">)<br></span><span
+            style="color:#e8ba36;"><br></span><span style="color:#5c6370;font-style:italic;"># Get difference between two dates<br></span>delta = date2 - date1<br><span
+            style="color:#2bbac5;">print</span><span style="color:#e8ba36;">(</span>delta.days<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br><span
+            style="color:#d19a66;">5<br></span><span style="color:#d19a66;"><br></span></div></pre></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><br></p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">**TIME</p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">The time module in Python provides various time-related
+        functions. It supplies functions for handling time-related tasks such as reading the current time, formatting
+        time, sleeping for a specified number of seconds and so on.&nbsp; <a
+                href="https://docs.python.org/3/library/time.html">docs</a></p>
+    <pre style="background-color:#282c34;color:#abb2bf;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><div
+            style="color: rgb(187, 187, 187);"><br><span
+            style="color:#5c6370;font-style:italic;"># Sleep for 2 seconds<br></span>time.<span style="color:#61afef;">sleep</span><span
+            style="color:#e8ba36;">(</span><span style="color:#d19a66;">2</span><span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span><span style="color:#e8ba36;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Get current time in the format of timestamp<br></span>current_time = time.<span
+            style="color:#61afef;">time</span><span style="color:#e8ba36;">()<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span><span style="color:#89ca78;">"Current time:"</span>, current_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br>Current time: <span
+            style="color:#e5c07b;">1690307751.4404945<br></span><span style="color:#e5c07b;"><br></span><span
+            style="color:#e5c07b;"><br></span><span style="color:#5c6370;font-style:italic;"># Get current local time based on computer time<br></span>local_time = time.<span
+            style="color:#61afef;">localtime</span><span style="color:#e8ba36;">(</span>current_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span><span style="color:#89ca78;">"Local time:"</span>, local_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br>Local time: <span
+            style="color:#e5c07b;">time.struct_time(tm_year=2023, tm_mon=7, tm_mday=25, tm_hour=21, tm_min=25, tm_sec=51, tm_wday=1, tm_yday=206, tm_isdst=0)<br></span><span
+            style="color:#e5c07b;"><br></span><span style="color:#e5c07b;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Get current UTC time<br></span>utc_time = time.<span
+            style="color:#61afef;">gmtime</span><span style="color:#e8ba36;">(</span>current_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span><span style="color:#89ca78;">"UTC time:"</span>, utc_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br>UTC time: <span
+            style="color:#e5c07b;">time.struct_time(tm_year=2023, tm_mon=7, tm_mday=25, tm_hour=17, tm_min=55, tm_sec=51, tm_wday=1, tm_yday=206, tm_isdst=0)<br></span><span
+            style="color:#e5c07b;"><br></span><span style="color:#e5c07b;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Convert a string to a struct_time<br></span>time_string = <span
+            style="color:#89ca78;">"20 Jun 93"<br></span>struct_time = time.<span style="color:#61afef;">strptime</span><span
+            style="color:#e8ba36;">(</span>time_string, <span style="color:#89ca78;">"%d %b %y"</span><span
+            style="color:#e8ba36;">)<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span><span style="color:#89ca78;">"Struct time:"</span>, struct_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br>Struct time: <span
+            style="color:#e5c07b;">time.struct_time(tm_year=1993, tm_mon=6, tm_mday=20, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=171, tm_isdst=-1)<br></span><span
+            style="color:#e5c07b;"><br></span><span style="color:#e5c07b;"><br></span><span
+            style="color:#5c6370;font-style:italic;"># Convert a struct_time to a string<br></span>time_string = time.<span
+            style="color:#61afef;">asctime</span><span style="color:#e8ba36;">(</span>struct_time<span
+            style="color:#e8ba36;">)<br></span><span style="color:#2bbac5;">print</span><span
+            style="color:#e8ba36;">(</span><span style="color:#89ca78;">"Time string:"</span>, time_string<span
+            style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span>result &gt;&gt;&gt;&gt;<br>Time string: <span
+            style="color:#e5c07b;">Sun </span>Jun <span style="color:#d19a66;">20 00</span>:<span
+            style="color:#e5c07b;">00</span>:<span style="color:#d19a66;">00 1993<br></span></div><div
+            style="color: rgb(187, 187, 187);"><span style="color:#d19a66;"><br></span></div></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;"><br></p>
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
