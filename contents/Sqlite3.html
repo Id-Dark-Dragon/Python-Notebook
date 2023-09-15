@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bases/style.css">
+    <script src="bases/script.js"></script>
+    <script src="bases/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("bases/uni-header.html");
+            $("#footer").load("bases/uni-footer.html")
+        });
+    </script>
+    <title>Sqlite3</title>
+</head>
+
+<body>
+<header id="header"></header>
+
+<!--The Documentation Section Goes Here-->
+<section id="Sqlite3">
+    <hr>
+    <h3>SQLite3</h3>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">SQLite is a self-contained, file-based SQL database. SQLite
+        comes bundled with Python and can be used in any of your Python applications where you need to communicate with database. <a href="https://docs.python.org/3/library/sqlite3.html" target="_blank">
+            Docs</a>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">It is so easy to get in touch with it.</p><p style="box-sizing: border-box; margin: 0px 0px 10px;">Creating a Database and a Table or Connecting to one:</p>
+    <pre style="background-color: rgb(40, 44, 52); color: rgb(187, 187, 187); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><div style="color: rgb(187, 187, 187);"><div><span style="color:#d55fde;font-style:italic;">import </span>sqlite3<br><br><span style="color:#5c6370;font-style:italic;"># Connect to a SQLite Database or Make a New Database If the database doesn't exist:<br></span>conn = sqlite3.<span style="color:#61afef;">connect</span><span style="color:#e8ba36;">(</span><span style="color:#89ca78;">'database.db'</span><span style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span><span style="color:#5c6370;font-style:italic;"># Create a Cursor Object to be able to execute SQL commands:<br></span>cursor = conn.<span style="color:#61afef;">cursor</span><span style="color:#e8ba36;">()<br></span><span style="color:#e8ba36;"><br></span><span style="color:#5c6370;font-style:italic;"># Create a table using SQL commands:<br></span>cursor.<span style="color:#61afef;">execute</span><span style="color:#e8ba36;">(</span><span style="color:#89ca78;">"""</span><span style="color:#89ca78;background-color:#2d3139;">CREATE TABLE IF NOT EXISTS mytable<br></span><span style="color:#89ca78;background-color:#2d3139;">                   (id INTEGER PRIMARY KEY,<br></span><span style="color:#89ca78;background-color:#2d3139;">                   name TEXT, <br></span><span style="color:#89ca78;background-color:#2d3139;">                   age INTEGER,<br></span><span style="color:#89ca78;background-color:#2d3139;">                   score REAL)</span><span style="color:#89ca78;">"""</span><span style="color:#e8ba36;">)   </span><span style="color:#5c6370;font-style:italic;"># Use REAL instaed of float</span></div><div><span style="color:#5c6370;font-style:italic;"><br></span></div></div></pre></pre></pre></pre>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px;">Perform Database Operations:</p>
+    <pre style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="color: rgb(171, 178, 191); font-family: &quot;JetBrains Mono&quot;, monospace;"><pre style="font-family: &quot;JetBrains Mono&quot;, monospace;"><div style="color: rgb(187, 187, 187);"><div><span style="color:#5c6370;font-style:italic;"># Insert Data into the table:<br></span>cursor.<span style="color:#61afef;">execute</span><span style="color:#e8ba36;">(</span><span style="color:#89ca78;">"</span><span style="color:#89ca78;background-color:#2d3139;">INSERT INTO mytable (name, age) VALUES (?, ?)</span><span style="color:#89ca78;">"</span>, <span style="color:#54a857;">(</span><span style="color:#89ca78;">'Alice'</span>, <span style="color:#d19a66;">30</span><span style="color:#54a857;">)</span><span style="color:#e8ba36;">)<br></span><span style="color:#e8ba36;"><br></span><span style="color:#5c6370;font-style:italic;"># Retrieve Data:<br></span>cursor.<span style="color:#61afef;">execute</span><span style="color:#e8ba36;">(</span><span style="color:#89ca78;">"</span><span style="color:#89ca78;background-color:#2d3139;">SELECT * FROM mytable</span><span style="color:#89ca78;">"</span><span style="color:#e8ba36;">)<br></span>data = cursor.<span style="color:#61afef;">fetchall</span><span style="color:#e8ba36;">()<br></span><span style="color:#d55fde;font-style:italic;">for </span>row <span style="color:#d55fde;font-style:italic;">in </span>data:<br>    <span style="color:#2bbac5;">print</span><span style="color:#e8ba36;">(</span>row<span style="color:#e8ba36;">)   </span><span style="color:#5c6370;font-style:italic;"># Each row prints a tuple of data.</span></div><div><span style="color:#5c6370;font-style:italic;"><br></span></div></div></pre></pre></pre></pre>
+    <p>Do not forget to commit data after inserting and close the connection after finishing the job:</p><div style="background-color:#282c34;color:#bbbbbb;font-family:'JetBrains Mono',monospace;font-size:۹٫۸pt;white-space:pre;">conn.<span style="color:#61afef;">commit</span><span style="color:#e8ba36;">()<br></span><span style="color:#e8ba36;"><br></span>conn.<span style="color:#61afef;">close</span><span style="color:#e8ba36;">()</span></div>
+
+</section>
+<!--Till Here-->
+
+<footer id="footer"></footer>
+</body>
+</html>
+
+
+
